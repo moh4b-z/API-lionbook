@@ -72,7 +72,7 @@ async function excluirUsuario(id) {
 
 async function listarTodosUsuarios() {
     try {
-        let result = await usuarioDAO.selectAllUsuarios()
+        let result = await usuarioDAO.selectAllUsuario()
         if (result) {
             return result.length > 0 ? { ...MENSAGE.SUCCESS_REQUEST, usuarios: result } : MENSAGE.ERROR_NOT_FOUND
         } else {

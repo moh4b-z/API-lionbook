@@ -78,7 +78,7 @@ async function excluirMovimentacao(id) {
 
 async function listarTodasMovimentacoes() {
     try {
-        let result = await movimentacaoDAO.selectAllMovimentacoes()
+        let result = await movimentacaoDAO.selectAllMovimentacao()
         if (result) {
             return result.length > 0
                 ? { ...MENSAGE.SUCCESS_REQUEST, movimentacoes: result }

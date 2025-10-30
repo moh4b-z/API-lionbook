@@ -1,5 +1,4 @@
-require('dotenv').config()
-const { PrismaClient } = require("../../../generated/prisma")
+const { PrismaClient } = require('../../../generated/prisma')
 const prismaMySQL = new PrismaClient()
 
 async function insertUsuario(usuario) {
@@ -64,9 +63,9 @@ async function selectByIdUsuario(id) {
     }
 }
 
-async function selectByEmail(email) {
+async function loginUsuario(email, senha) {
     try {
-        let result = await prismaMySQL.tbl_usuario.findUnique({ where: { email } })
+        let result = await prismaMySQL.tbl_usuario.findUnique({ where: { email } },{ where: { senha } })
         return result || null
     } catch (error) {
         console.error("Erro DAO: Erro ao buscar usuário por e-mail.", error)
@@ -80,5 +79,5 @@ module.exports = {
     deleteUsuario,
     selectAllUsuario,
     selectByIdUsuario,
-    selectByEmail
+    loginUsuario
 }

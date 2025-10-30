@@ -1,4 +1,4 @@
-const { PrismaClient } = require("../../../generated/prisma")
+const { PrismaClient } = require('../../../generated/prisma')
 const prismaMySQL = new PrismaClient()
 
 async function insertMovimentacao(mov) {

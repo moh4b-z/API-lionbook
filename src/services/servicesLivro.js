@@ -82,7 +82,7 @@ async function excluirLivro(id) {
 // Listar todos os livros
 async function listarTodosLivros() {
     try {
-        let result = await livroDAO.selectAllLivros()
+        let result = await livroDAO.selectAllLivro()
         if (result) {
             return result.length > 0
                 ? { ...MENSAGE.SUCCESS_REQUEST, livros: result }

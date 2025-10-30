@@ -78,7 +78,7 @@ async function excluirTipoMovimentacao(id) {
 
 async function listarTodosTiposMovimentacao() {
     try {
-        let result = await tipoMovimentacaoDAO.selectAllTiposMovimentacao()
+        let result = await tipoMovimentacaoDAO.selectAllTipoMovimentacao()
         if (result) {
             return result.length > 0
                 ? { ...MENSAGE.SUCCESS_REQUEST, tipos_movimentacao: result }

@@ -5,7 +5,7 @@
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 generator client {
-  provider = "prisma-client"
+  provider = "prisma-client-js"
   output   = "../generated/prisma"
 }
 
@@ -16,32 +16,32 @@ datasource db {
 
 
 
-model Usuario {
+model tbl_usuario {
   id       Int           @id @default(autoincrement())
   email    String        @unique
   senha    String
 
-  movimentacoes Movimentacao[]
+  movimentacoes tbl_movimentacao[]
 }
 
-model Livro {
+model tbl_livro {
   id             Int           @id @default(autoincrement())
   titulo         String
   data_publicacao DateTime
   quantidade     Int           @default(0)
   isbn           String
 
-  movimentacoes Movimentacao[]
+  movimentacoes tbl_movimentacao[]
 }
 
-model TipoMovimentacao {
+model tbl_tipo_movimentacao {
   id     Int           @id @default(autoincrement())
   tipo   String
 
-  movimentacoes Movimentacao[]
+  movimentacoes tbl_movimentacao[]
 }
 
-model Movimentacao {
+model tbl_movimentacao {
   id               Int               @id @default(autoincrement())
   id_livro         Int
   id_usuario       Int
@@ -49,7 +49,7 @@ model Movimentacao {
   quantidade       Int               @db.Int
   data_movimentacao DateTime         @default(now())
 
-  usuario          Usuario           @relation(fields: [id_usuario], references: [id])
-  livro            Livro             @relation(fields: [id_livro], references: [id])
-  tipoMovimentacao TipoMovimentacao  @relation(fields: [id_movimentacao], references: [id])
+  usuario          tbl_usuario           @relation(fields: [id_usuario], references: [id])
+  livro            tbl_livro             @relation(fields: [id_livro], references: [id])
+  tipoMovimentacao tbl_tipo_movimentacao  @relation(fields: [id_movimentacao], references: [id])
 }
